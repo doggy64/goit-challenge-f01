@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Motor de Precios - E-commerce Dashboard</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<h1>Motor de Precios</h1>
+			<p>Sistema de cálculo de precios para e-commerce</p>
+		</header>
+
+		<div class="container">
+			<section class="products-section card">
+				<div class="card-header">Carrito de Compras</div>
+				<div class="card-body">
+					<table class="product-table">
+						<thead>
+							<tr>
+								<th>Producto</th>
+								<th>Precio Unitario</th>
+								<th>Cantidad</th>
+								<th>Subtotal</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody id="cart-body"></tbody>
+					</table>
+
+					<div
+						class="empty-cart"
+						id="empty-message"
+						style="display: none"
+					>
+						<div class="empty-cart-icon">🛒</div>
+						<p>Tu carrito está vacío</p>
+					</div>
+
+					<button
+						id="btn-add-product"
+						style="
+							margin-top: 1rem;
+							padding: 0.75rem 1.5rem;
+							background: #64748b;
+							color: white;
+							border: none;
+							border-radius: 8px;
+							cursor: pointer;
+							font-size: 0.9rem;
+						"
+					>
+						+ Agregar Producto de Prueba
+					</button>
+				</div>
+			</section>
+
+			<aside class="summary-section card">
+				<div class="card-header">Resumen del Pedido</div>
+				<div class="card-body">
+					<!-- Cupón de Descuento -->
+					<div class="coupon-section">
+						<label class="coupon-label">Cupón de Descuento</label>
+						<div class="coupon-input-group">
+							<input
+								type="text"
+								id="input-cupon"
+								class="coupon-input"
+								placeholder="Ej: WELCOME10"
+								maxlength="20"
+							/>
+							<button
+								id="btn-aplicar-cupon"
+								class="btn-apply-coupon"
+							>
+								Aplicar
+							</button>
+						</div>
+						<div
+							id="mensaje"
+							class="coupon-message"
+							style="display: none"
+						></div>
+					</div>
+
+					<div class="country-section">
+						<label class="country-label"
+							>País de Envío (para impuestos)</label
+						>
+						<select id="selector-pais" class="country-select">
+							<option value="ES" selected>
+								🇪🇸 España (IVA 21%)
+							</option>
+							<option value="MX">🇲🇽 México (IVA 16%)</option>
+							<option value="AR">🇦🇷 Argentina (IVA 21%)</option>
+							<option value="CO">🇨🇴 Colombia (IVA 19%)</option>
+							<option value="US">
+								🇺🇸 Estados Unidos (Tax 7%)
+							</option>
+							<option value="UK">🇬🇧 Reino Unido (VAT 20%)</option>
+							<option value="DE">🇩🇪 Alemania (MwSt 19%)</option>
+						</select>
+					</div>
+
+					<div class="totals-section">
+						<div class="total-row">
+							<span class="total-label">Subtotal:</span>
+							<span class="total-value" id="subtotal">0.00€</span>
+						</div>
+						<div class="total-row discount">
+							<span class="total-label">Descuento:</span>
+							<span class="total-value" id="descuento"
+								>-0.00€</span
+							>
+						</div>
+						<div class="total-row tax">
+							<span class="total-label" id="impuesto-label"
+								>Impuestos:</span
+							>
+							<span class="total-value" id="impuesto">0.00€</span>
+						</div>
+						<div class="total-row final">
+							<span class="total-label">TOTAL:</span>
+							<span class="total-value" id="total">0.00€</span>
+						</div>
+					</div>
+
+					<button id="btn-finalizar" class="btn-checkout">
+						✓ Finalizar Compra
+					</button>
+				</div>
+			</aside>
+		</div>
+
+		<footer
+			style="
+				text-align: center;
+				padding: 2rem;
+				color: #64748b;
+				font-size: 0.9rem;
+			"
+		>
+			<p style="font-size: 0.8rem; margin-top: 0.5rem">
+				Cupones disponibles para probar: WELCOME10, SAVE20, FLAT50,
+				VIP25
+			</p>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>
