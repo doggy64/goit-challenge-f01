@@ -2,56 +2,56 @@ const productos = [
 	{
 		id: 1,
 		nombre: "Laptop Gaming Pro",
-		precio: "1299.99$",
+		precio: 1299.99,
 		cantidad: 1,
 		categoria: "electronica",
 	},
 	{
 		id: 2,
 		nombre: "Mouse Inalámbrico",
-		precio: "29.99$",
+		precio: 29.99,
 		cantidad: 2,
 		categoria: "accesorios",
 	},
 	{
 		id: 3,
 		nombre: "Teclado Mecánico RGB",
-		precio: "89.50$",
+		precio: 89.50,
 		cantidad: 1,
 		categoria: "accesorios",
 	},
 	{
 		id: 4,
 		nombre: 'Monitor 4K 27"',
-		precio: "449.00$",
+		precio: 449.00,
 		cantidad: 1,
 		categoria: "electronica",
 	},
 	{
 		id: 5,
 		nombre: "Webcam HD 1080p",
-		precio: "79.99$",
+		precio: 79.99,
 		cantidad: 1,
 		categoria: "accesorios",
 	},
 	{
 		id: 6,
 		nombre: "Auriculares Bluetooth",
-		precio: "159.99$",
+		precio: 159.99,
 		cantidad: 1,
 		categoria: "audio",
 	},
 	{
 		id: 7,
 		nombre: "Hub USB-C 7 puertos",
-		precio: "45.50$",
+		precio: 45.50,
 		cantidad: 3,
 		categoria: "accesorios",
 	},
 	{
 		id: 8,
 		nombre: "SSD 1TB NVMe",
-		precio: "129.99$",
+		precio: 129.99,
 		cantidad: 1,
 		categoria: "almacenamiento",
 	},
@@ -75,7 +75,7 @@ function renderCart() {
 	carrito.forEach((producto, index) => {
 		const tr = document.createElement("tr");
 
-		let precioMostrar = producto.precio;
+		let precioMostrar = producto.precio + "$";
 
 		tr.innerHTML = `
             <td class="product-name">${producto.nombre}</td>
