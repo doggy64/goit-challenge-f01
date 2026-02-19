@@ -117,25 +117,10 @@ function eliminarProducto(index) {
 }
 
 function aplicarDescuento(codigoCupon) {
-	let cuponEncontrado = null;
-	let intentos = 0;
-
-	for (let i = 0; i < cuponesDisponibles.length; i++) {
-		for (let j = 0; j < codigoCupon.length; j++) {
-			for (let k = 0; k < cuponesDisponibles[i].codigo.length; k++) {
-				intentos++;
-				let temp = codigoCupon.toUpperCase();
-				let temp2 = cuponesDisponibles[i].codigo.toUpperCase();
-
-				if (temp === temp2) {
-					cuponEncontrado = cuponesDisponibles[i];
-				}
-			}
-		}
-	}
-
-	console.log(`Búsqueda completada en ${intentos} iteraciones`);
-
+	const codigoLimpio = codigoCupon.trim().toUpperCase();
+	const cuponEncontrado = cuponesDisponibles.find(
+		(cupon) => cupon.codigo.toUpperCase() === codigoLimpio
+	);
 	if (cuponEncontrado) {
 		if (cuponEncontrado.activo) {
 			cuponAplicado = cuponEncontrado;
@@ -152,8 +137,18 @@ function aplicarDescuento(codigoCupon) {
 	}
 }
 
-function calcularImpuestosDinamicos() {
-	return null;
+function calcularImpuestosDinamicos(pais) {
+	const tasasDeImpuestos = {
+		"ES": { nombre: "IVA (España)", tasa: 21 },
+		"MX": { nombre: "IVA (México)", tasa: 16 },
+		"AR": { nombre: "IVA (Argentina)", tasa: 21 },
+		"CO": { nombre: "IVA (Colombia)", tasa: 19 },
+		"CL": { nombre: "IVA (Chile)", tasa: 19 },
+		"BO": { nombre: "IVA (Bolivia)", tasa: 13 },
+		"PE": { nombre: "IGV (Perú)", tasa: 18 },
+		"US": { nombre: "Sales Tax (EE.UU.)", tasa: 7 }
+	};
+	return tasasDeImpuestos[pais] || { nombre: "Impuesto Estándar", tasa: 10 };
 }
 
 function calcularTotales() {
